@@ -14,9 +14,9 @@ class DemoPageState extends State<DemoPage> {
   /// 动态适配不同平台的 TitleBar
   dynamic buildTitleBar(BuildContext context) {
     Text titleTV = Text(
-      'IMPlugin Demo',
+      'VFPlugin Demo',
       style: TextStyle(
-        color: Theme.of(context).accentColor,
+        color: VFColors.white,
         fontSize: 20.0,
         fontWeight: FontWeight.bold,
       ),
@@ -39,7 +39,7 @@ class DemoPageState extends State<DemoPage> {
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text('聊天设置'),
+            title: Text('Demo 选项 1'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return null;
@@ -47,7 +47,7 @@ class DemoPageState extends State<DemoPage> {
             },
           ),
           ListTile(
-            title: Text('IMPluginDemo'),
+            title: Text('Demo 选项 2'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
                 return null;

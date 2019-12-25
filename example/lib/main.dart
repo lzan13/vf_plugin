@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:vf_plugin/vf_plugin.dart';
+
 import 'demo_page.dart';
 
 void main() async {
@@ -21,21 +23,21 @@ class StartApp extends StatelessWidget {
   /// 构建主题
   ThemeData _buildThemeData() {
     return ThemeData(
-      pageTransitionsTheme: PageTransitionsTheme(builders: {
-        // Android 使用 iOS 的页面动画
-        TargetPlatform.android: const _CustomAndroidTransitionsBuilder(),
-        TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
-      }),
+      // pageTransitionsTheme: PageTransitionsTheme(builders: {
+      //   // Android 使用 iOS 的页面动画
+      //   TargetPlatform.android: const _CustomAndroidTransitionsBuilder(),
+      //   TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
+      // }),
       appBarTheme: AppBarTheme(
-        color: Color(0xffc60a1e),
+        color: VFColors.red,
         elevation: 0,
       ),
-      primarySwatch: Colors.green,
-      brightness: Brightness.light,
-      primaryColorBrightness:
-          Platform.isIOS ? Brightness.light : Brightness.dark,
-      primaryColor: Color(0xffc60a1e),
-      accentColor: Color(0xffffffff),
+      // primarySwatch: Colors.grey,
+      primaryColorBrightness: Brightness.dark,
+      primaryColor: VFColors.red,
+      primaryColorDark: VFColors.redDark,
+      accentColor: VFColors.green,
+      dividerColor: VFColors.grey12,
 
       /// 因为 iOS 上字体有时候会出现奇怪的问题
       /// [github issues](https://github.com/flutter/flutter/issues/26752)
