@@ -17,14 +17,13 @@ import io.flutter.plugin.common.PluginRegistry;
 public class VFCommonPlugin implements MethodChannel.MethodCallHandler {
 
     private final Context mContext;
-    private final String mChannelName = "com.vmloft.develop.library.flutter.plugin.vf_common_plugin";
     private MethodChannel mChannel;
 
     /**
      * 注册 MethodChannel
      */
     public static void registerWith(PluginRegistry.Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), mChannelName);
+        final MethodChannel channel = new MethodChannel(registrar.messenger(), "com.vmloft.develop.library.flutter.plugin.vf_common_plugin");
         channel.setMethodCallHandler(new VFCommonPlugin(registrar.context(), channel));
     }
 
