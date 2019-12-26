@@ -4,6 +4,7 @@
 class VFDimens {
   /// 通用尺寸
   static const double d_0 = 0.0;
+  static const double d_0_5 = 0.5;
   static const double d_1 = 1.0;
   static const double d_2 = 2.0;
   static const double d_4 = 4.0;
@@ -46,6 +47,12 @@ class VFDimens {
   static const double avatar_normal = d_56;
   static const double avatar_large = d_72;
 
+  /// 边框背景半径定义
+  static const double border_radius_little = d_2;
+  static const double border_radius_small = d_4;
+  static const double border_radius_normal = d_6;
+  static const double border_radius_large = d_12;
+
   /// 圆形背景半径定义
   static const double round_radius_small = d_36;
   static const double round_radius_normal = d_56;
@@ -84,12 +91,12 @@ class VFDimens {
 ///
 class VFSizes {
   /// 标题
-  static const double title = VFDimens.d_18;
-  static const double sub_title = VFDimens.d_14;
+  static const double title = VFDimens.d_20;
+  static const double sub_title = VFDimens.d_16;
   static const double body = VFDimens.d_12;
 
   /// 列表
-  static const double list_item_title = VFDimens.d_14;
+  static const double list_item_title = VFDimens.d_16;
   static const double list_item_desc = VFDimens.d_12;
 
   /// 按钮

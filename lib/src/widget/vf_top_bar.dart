@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:vf_plugin/src/constants/vf_colors.dart';
 import 'package:vf_plugin/src/constants/vf_dimens.dart';
 
-class VFTopBar extends StatefulWidget {
+class VFTopBar extends StatefulWidget implements PreferredSizeWidget {
   final double height;
   final double top;
   final String title;
@@ -13,6 +13,8 @@ class VFTopBar extends StatefulWidget {
   final IconData leftIcon;
   final Widget leftWidget;
   final IconData rightIcon;
+  final VoidCallback rightIconAction;
+  final Color bgColor;
 
   VFTopBar({
     Key key,
@@ -25,12 +27,17 @@ class VFTopBar extends StatefulWidget {
     this.leftIcon,
     this.leftWidget,
     this.rightIcon,
+    this.rightIconAction,
+    this.bgColor,
   }) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     return VFTopBarState();
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(VFDimens.d_48);
 }
 
 ///
@@ -39,19 +46,26 @@ class VFTopBar extends StatefulWidget {
 class VFTopBarState extends State<VFTopBar> {
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+    final AppBarTheme appBarTheme = AppBarTheme.of(context);
+
     return Container(
       padding: EdgeInsets.only(top: widget.top),
       height: widget.height + widget.top,
+      color: widget.bgColor ?? appBarTheme.color ?? themeData.primaryColor,
       child: Row(children: <Widget>[
         widget.leftIcon != null
             ? Container(
                 child: SizedBox(
                   height: widget.height,
                   width: widget.height,
-                  child: Icon(
-                    widget.leftIcon,
-                    size: VFDimens.d_24,
-                    color: widget.titleColor,
+                  child: IconButton(
+                    icon: Icon(
+                      widget.leftIcon,
+                      size: VFDimens.d_24,
+                      color: widget.titleColor,
+                    ),
+                    onPressed: () => Navigator.pop(context),
                   ),
                 ),
               )
@@ -74,10 +88,13 @@ class VFTopBarState extends State<VFTopBar> {
                 child: SizedBox(
                   height: widget.height,
                   width: widget.height,
-                  child: Icon(
-                    widget.rightIcon,
-                    size: VFDimens.d_24,
-                    color: widget.titleColor,
+                  child: IconButton(
+                    icon: Icon(
+                      widget.rightIcon,
+                      size: VFDimens.d_24,
+                      color: widget.titleColor,
+                    ),
+                    onPressed: widget.rightIconAction,
                   ),
                 ),
               )
@@ -85,14 +102,6 @@ class VFTopBarState extends State<VFTopBar> {
                 width: VFDimens.margin_normal,
               ),
       ]),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-            colors: [const Color(0xFF3366FF), const Color(0xFF00CCFF)],
-            begin: const FractionalOffset(0.0, 0.0),
-            end: const FractionalOffset(1.0, 0.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.clamp),
-      ),
     );
   }
 }

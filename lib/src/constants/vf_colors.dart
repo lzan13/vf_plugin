@@ -172,4 +172,6 @@ class VFColors {
   static const Color brown54 = Color(0x8a795548);
   static const Color brown38 = Color(0x62795548);
   static const Color brown12 = Color(0x1f795548);
+
+  static const Color divider = greyWhite54;
 }

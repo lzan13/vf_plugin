@@ -25,7 +25,7 @@ class CircleIcon extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.all(Radius.circular(16.0)),
+        borderRadius: BorderRadius.all(Radius.circular(VFDimens.d_56)),
       ),
       child: Center(
         child: icon == null
