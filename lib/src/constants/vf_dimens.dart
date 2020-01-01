@@ -16,6 +16,7 @@ class VFDimens {
   static const double d_12 = 12.0;
   static const double d_13 = 13.0;
   static const double d_14 = 14.0;
+  static const double d_15 = 15.0;
   static const double d_16 = 16.0;
   static const double d_18 = 18.0;
   static const double d_20 = 20.0;
@@ -90,6 +91,22 @@ class VFDimens {
 /// 常用文本尺寸
 ///
 class VFSizes {
+  static const double s_8 = VFDimens.d_8;
+  static const double s_9 = VFDimens.d_8;
+  static const double s_10 = VFDimens.d_10;
+  static const double s_11 = VFDimens.d_11;
+  static const double s_12 = VFDimens.d_12;
+  static const double s_13 = VFDimens.d_13;
+  static const double s_14 = VFDimens.d_14;
+  static const double s_15 = VFDimens.d_15;
+  static const double s_16 = VFDimens.d_16;
+  static const double s_18 = VFDimens.d_18;
+  static const double s_20 = VFDimens.d_20;
+  static const double s_22 = VFDimens.d_22;
+  static const double s_24 = VFDimens.d_24;
+  static const double s_28 = VFDimens.d_28;
+  static const double s_30 = VFDimens.d_30;
+
   /// 标题
   static const double title = VFDimens.d_20;
   static const double sub_title = VFDimens.d_16;
@@ -103,6 +120,11 @@ class VFSizes {
   static const double btn_small = VFDimens.d_12;
   static const double btn_normal = VFDimens.d_16;
   static const double btn_large = VFDimens.d_18;
+
+  /// 菜单
+  static const double menu_small = VFDimens.d_12;
+  static const double menu_normal = VFDimens.d_16;
+  static const double menu_large = VFDimens.d_18;
 
   /// Tab文本
   static const double tab_small = VFDimens.d_12;
