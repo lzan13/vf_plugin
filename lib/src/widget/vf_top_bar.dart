@@ -76,6 +76,7 @@ class VFTopBarState extends State<VFTopBar> {
         Center(
           child: Text(
             widget.title,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: widget.titleColor,
               fontWeight: FontWeight.w500,

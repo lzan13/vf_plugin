@@ -95,6 +95,7 @@ class VFListItemState extends State<VFListItem> {
                     widget.title != null
                         ? Text(
                             widget.title,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               color: widget.titleColor,
                               fontSize: VFSizes.list_item_title,
@@ -106,6 +107,7 @@ class VFListItemState extends State<VFListItem> {
                         ? Text(
                             widget.describe,
                             maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: widget.describeColor,
                                 fontSize: VFSizes.list_item_desc),
