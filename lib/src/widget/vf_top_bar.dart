@@ -6,29 +6,40 @@ import 'package:vf_plugin/src/constants/vf_dimens.dart';
 class VFTopBar extends StatefulWidget implements PreferredSizeWidget {
   final double height;
   final double top;
+  final Color bgColor;
+
+  // 标题
   final String title;
   final double titleSize;
   final Color titleColor;
-  final bool centerTitle;
+  // 居中
+  final bool center;
+
+  // 左侧图标
   final IconData leftIcon;
+  final VoidCallback leftAction;
   final Widget leftWidget;
+
+  // 右侧图标
   final IconData rightIcon;
-  final VoidCallback rightIconAction;
-  final Color bgColor;
+  final VoidCallback rightAction;
+  final Widget rightWidget;
 
   VFTopBar({
     Key key,
     this.height: VFDimens.bar_normal,
     this.top,
+    this.bgColor,
     this.title,
     this.titleSize: VFSizes.title,
     this.titleColor: VFColors.greyBlack,
-    this.centerTitle: false,
+    this.center: false,
     this.leftIcon,
+    this.leftAction,
     this.leftWidget,
     this.rightIcon,
-    this.rightIconAction,
-    this.bgColor,
+    this.rightAction,
+    this.rightWidget,
   }) : super(key: key);
 
   @override
@@ -65,7 +76,9 @@ class VFTopBarState extends State<VFTopBar> {
                       size: VFDimens.d_24,
                       color: widget.titleColor,
                     ),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: widget.leftAction == null
+                        ? () => Navigator.pop(context)
+                        : widget.leftAction,
                   ),
                 ),
               )
@@ -73,10 +86,12 @@ class VFTopBarState extends State<VFTopBar> {
                 width: VFDimens.margin_normal,
               ),
         widget.leftWidget != null ? widget.leftWidget : Container(),
-        Center(
+        Expanded(
+          flex: 1,
           child: Text(
             widget.title,
             overflow: TextOverflow.ellipsis,
+            textAlign: widget.center ? TextAlign.center : TextAlign.start,
             style: TextStyle(
               color: widget.titleColor,
               fontWeight: FontWeight.w500,
@@ -84,6 +99,7 @@ class VFTopBarState extends State<VFTopBar> {
             ),
           ),
         ),
+        widget.rightWidget != null ? widget.rightWidget : Container(),
         widget.rightIcon != null
             ? Container(
                 child: SizedBox(
@@ -95,7 +111,7 @@ class VFTopBarState extends State<VFTopBar> {
                       size: VFDimens.d_24,
                       color: widget.titleColor,
                     ),
-                    onPressed: widget.rightIconAction,
+                    onPressed: widget.rightAction,
                   ),
                 ),
               )

@@ -44,7 +44,7 @@ class VFListItem extends StatefulWidget {
     this.rightIconColor: VFColors.grey,
     this.rightWidget,
     this.title,
-    this.titleColor: VFColors.black,
+    this.titleColor: VFColors.black87,
     this.describe,
     this.describeColor: VFColors.grey,
   }) : super(key: key);
