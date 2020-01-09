@@ -94,7 +94,7 @@ class VFTopBarState extends State<VFTopBar> {
             textAlign: widget.center ? TextAlign.center : TextAlign.start,
             style: TextStyle(
               color: widget.titleColor,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
               fontSize: widget.titleSize,
             ),
           ),
