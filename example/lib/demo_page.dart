@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:vf_plugin/vf_plugin.dart';
+
+import 'package:vf_plugin_example/page/list_example_page.dart';
 import 'package:vf_plugin_example/page/loading_page.dart';
 
 class DemoPage extends StatefulWidget {
@@ -28,10 +30,10 @@ class DemoPageState extends State<DemoPage> {
             },
           ),
           ListTile(
-            title: Text('Demo 选项 2'),
+            title: Text('测试 VFExampleItem'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return null;
+                return ExampleListPage();
               }));
             },
           ),
