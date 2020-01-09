@@ -1,9 +1,7 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:vf_plugin/vf_plugin.dart';
+import 'package:vf_plugin_example/page/loading_page.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -11,38 +9,21 @@ class DemoPage extends StatefulWidget {
 }
 
 class DemoPageState extends State<DemoPage> {
-  /// 动态适配不同平台的 TitleBar
-  dynamic buildTitleBar(BuildContext context) {
-    Text titleTV = Text(
-      'VFPlugin Demo',
-      style: TextStyle(
-        color: VFColors.white,
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-    return Platform.isIOS
-        ? CupertinoNavigationBar(
-            backgroundColor: Theme.of(context).primaryColor,
-            middle: titleTV,
-          )
-        : AppBar(
-            title: titleTV,
-            brightness: Theme.of(context).primaryColorBrightness,
-          );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildTitleBar(context),
+      appBar: VFTopBar(
+        top: MediaQuery.of(context).padding.top,
+        title: "插件 Example",
+        titleColor: VFColors.white,
+      ),
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text('Demo 选项 1'),
+            title: Text('Loading 控件'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return null;
+                return LoadingPage();
               }));
             },
           ),
