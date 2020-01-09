@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:vf_plugin/src/widget/progress/vf_tween.dart';
 
-class VFPCircle extends StatefulWidget {
-  const VFPCircle({
+class VFLRotatingCircle extends StatefulWidget {
+  const VFLRotatingCircle({
     Key key,
     this.color,
     this.size = 50.0,
@@ -23,26 +22,13 @@ class VFPCircle extends StatefulWidget {
   final AnimationController controller;
 
   @override
-  VFPCircleState createState() => VFPCircleState();
+  _VFLRotatingCircleState createState() => _VFLRotatingCircleState();
 }
 
-class VFPCircleState extends State<VFPCircle>
+class _VFLRotatingCircleState extends State<VFLRotatingCircle>
     with SingleTickerProviderStateMixin {
-  final List<double> delays = [
-    .0,
-    -1.1,
-    -1.0,
-    -0.9,
-    -0.8,
-    -0.7,
-    -0.6,
-    -0.5,
-    -0.4,
-    -0.3,
-    -0.2,
-    -0.1
-  ];
   AnimationController _controller;
+  Animation<double> _animation1, _animation2;
 
   @override
   void initState() {
@@ -50,7 +36,14 @@ class VFPCircleState extends State<VFPCircle>
 
     _controller = (widget.controller ??
         AnimationController(vsync: this, duration: widget.duration))
+      ..addListener(() => setState(() {}))
       ..repeat();
+    _animation1 = Tween(begin: 0.0, end: 180.0).animate(CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.5, curve: Curves.easeIn)));
+    _animation2 = Tween(begin: 0.0, end: 180.0).animate(CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.5, 1.0, curve: Curves.easeOut)));
   }
 
   @override
@@ -62,30 +55,13 @@ class VFPCircleState extends State<VFPCircle>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox.fromSize(
-        size: Size.square(widget.size),
-        child: Stack(
-          children: List.generate(delays.length, (index) {
-            final _position = widget.size * .5;
-            return Positioned.fill(
-              left: _position,
-              top: _position,
-              child: Transform(
-                transform: Matrix4.rotationZ(30.0 * index * 0.0174533),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: ScaleTransition(
-                    scale: VFTween(begin: 0.0, end: 1.0, delay: delays[index])
-                        .animate(_controller),
-                    child: SizedBox.fromSize(
-                        size: Size.square(widget.size * 0.15),
-                        child: _itemBuilder(index)),
-                  ),
-                ),
-              ),
-            );
-          }),
-        ),
+      child: Transform(
+        transform: Matrix4.identity()
+          ..rotateX((0 - _animation1.value) * 0.0174533)
+          ..rotateY((0 - _animation2.value) * 0.0174533),
+        alignment: FractionalOffset.center,
+        child: SizedBox.fromSize(
+            size: Size.square(widget.size), child: _itemBuilder(0)),
       ),
     );
   }

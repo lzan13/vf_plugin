@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class VFPCubeGrid extends StatefulWidget {
-  const VFPCubeGrid({
+class VFLCubeGrid extends StatefulWidget {
+  const VFLCubeGrid({
     Key key,
     this.color,
     this.size = 50.0,
@@ -22,10 +22,10 @@ class VFPCubeGrid extends StatefulWidget {
   final AnimationController controller;
 
   @override
-  VFPCubeGridState createState() => VFPCubeGridState();
+  VFLCubeGridState createState() => VFLCubeGridState();
 }
 
-class VFPCubeGridState extends State<VFPCubeGrid>
+class VFLCubeGridState extends State<VFLCubeGrid>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> _anim1, _anim2, _anim3, _anim4, _anim5;

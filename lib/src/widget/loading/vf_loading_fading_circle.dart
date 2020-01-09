@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:vf_plugin/src/widget/progress/vf_tween.dart';
+import 'package:vf_plugin/src/widget/loading/vf_tween.dart';
 
-class VFPCircle extends StatefulWidget {
-  const VFPCircle({
+class VFLFadingCircle extends StatefulWidget {
+  const VFLFadingCircle({
     Key key,
     this.color,
     this.size = 50.0,
@@ -23,10 +23,10 @@ class VFPCircle extends StatefulWidget {
   final AnimationController controller;
 
   @override
-  VFPCircleState createState() => VFPCircleState();
+  _VFLFadingCircleState createState() => _VFLFadingCircleState();
 }
 
-class VFPCircleState extends State<VFPCircle>
+class _VFLFadingCircleState extends State<VFLFadingCircle>
     with SingleTickerProviderStateMixin {
   final List<double> delays = [
     .0,
@@ -65,21 +65,21 @@ class VFPCircleState extends State<VFPCircle>
       child: SizedBox.fromSize(
         size: Size.square(widget.size),
         child: Stack(
-          children: List.generate(delays.length, (index) {
+          children: List.generate(12, (i) {
             final _position = widget.size * .5;
             return Positioned.fill(
               left: _position,
               top: _position,
               child: Transform(
-                transform: Matrix4.rotationZ(30.0 * index * 0.0174533),
+                transform: Matrix4.rotationZ(30.0 * i * 0.0174533),
                 child: Align(
                   alignment: Alignment.center,
-                  child: ScaleTransition(
-                    scale: VFTween(begin: 0.0, end: 1.0, delay: delays[index])
+                  child: FadeTransition(
+                    opacity: VFTween(begin: 0.0, end: 1.0, delay: delays[i])
                         .animate(_controller),
                     child: SizedBox.fromSize(
                         size: Size.square(widget.size * 0.15),
-                        child: _itemBuilder(index)),
+                        child: _itemBuilder(i)),
                   ),
                 ),
               ),

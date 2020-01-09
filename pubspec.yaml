@@ -11,9 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 进度样式
-  flutter_spinkit: "^4.1.1"
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
