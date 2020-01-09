@@ -4,6 +4,8 @@ import 'package:vf_plugin/vf_plugin.dart';
 
 import 'package:vf_plugin_example/page/list_example_page.dart';
 import 'package:vf_plugin_example/page/loading_page.dart';
+import 'package:vf_plugin_example/page/sliver_page.dart';
+import 'package:vf_plugin_example/page/test_page.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -19,26 +21,43 @@ class DemoPageState extends State<DemoPage> {
         title: "插件 Example",
         titleColor: VFColors.white,
       ),
-      body: ListView(
-        children: <Widget>[
-          ListTile(
-            title: Text('Loading 控件'),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return LoadingPage();
-              }));
-            },
-          ),
-          ListTile(
-            title: Text('测试 VFExampleItem'),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) {
-                return ExampleListPage();
-              }));
-            },
-          ),
-        ],
-      ),
+      body: ListView(children: <Widget>[
+        VFListItem(
+          isNewGroup: true,
+          title: 'Loading 控件',
+          describe: '查看下自定义的 loading 控件',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return LoadingPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: 'VFExampleItem',
+          describe: '验证自定义 VFExampleItem 控件是否好用',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return ExampleListPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '自定义 SliverDelegate',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return SliverPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: 'VFListItem 内容过长的情况，内容过长的情况内容过长的情况',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return TestPage();
+            }));
+          },
+        ),
+      ]),
     );
   }
 }
