@@ -6,30 +6,33 @@ import 'package:vf_plugin/src/constants/vf_dimens.dart';
 /// 自定义列表项
 class VFListItem extends StatefulWidget {
   // 是否是新分组的开头
-  final bool isNewGroup;
+  bool isNewGroup;
   // 显示 divider
-  final bool showDivider;
+  bool showDivider;
   // 点击事件
-  final VoidCallback onPressed;
+  VoidCallback onPressed;
+
+  // 背景色
+  Color bgColor;
 
   // 左侧图标
-  final IconData leftIcon;
-  final Color leftIconColor;
+  IconData leftIcon;
+  Color leftIconColor;
   // 左侧控件
-  final Widget leftWidget;
+  Widget leftWidget;
 
   // 右侧图标
-  final IconData rightIcon;
-  final Color rightIconColor;
+  IconData rightIcon;
+  Color rightIconColor;
   // 右侧控件
-  final Widget rightWidget;
+  Widget rightWidget;
 
   // 标题
-  final String title;
-  final Color titleColor;
+  String title;
+  Color titleColor;
   // 描述
-  final String describe;
-  final Color describeColor;
+  String describe;
+  Color describeColor;
 
   // 构造函数
   VFListItem({
@@ -44,7 +47,7 @@ class VFListItem extends StatefulWidget {
     this.rightIconColor: VFColors.grey,
     this.rightWidget,
     this.title,
-    this.titleColor: VFColors.black87,
+    this.titleColor,
     this.describe,
     this.describeColor: VFColors.grey,
   }) : super(key: key);
@@ -57,6 +60,11 @@ class VFListItemState extends State<VFListItem> {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
+
+    widget.titleColor = widget.titleColor != null
+        ? themeData.textTheme.title.color
+        : widget.titleColor;
+
     return FlatButton(
       onPressed: widget.onPressed,
       padding: EdgeInsets.all(VFDimens.d_0),
@@ -76,7 +84,7 @@ class VFListItemState extends State<VFListItem> {
                         child: Icon(
                           widget.leftIcon,
                           size: VFDimens.d_24,
-                          color: widget.leftIconColor ?? themeData.primaryColor,
+                          color: widget.leftIconColor ?? themeData.accentColor,
                         ),
                       ),
                     )

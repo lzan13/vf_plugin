@@ -7,6 +7,7 @@ class VFDimens {
   static const double d_0_5 = 0.5;
   static const double d_1 = 1.0;
   static const double d_2 = 2.0;
+  static const double d_3 = 3.0;
   static const double d_4 = 4.0;
   static const double d_6 = 6.0;
   static const double d_8 = 8.0;
