@@ -30,7 +30,6 @@ class LoadingPageState extends State<LoadingPage> {
         ),
         itemBuilder: (context, index) {
           return VFLoading(
-            color: VFColors.green,
             type: VFLoadingType.values[index],
           );
         },

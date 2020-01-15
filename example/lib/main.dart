@@ -37,7 +37,7 @@ class StartApp extends StatelessWidget {
       primaryColor: VFColors.red,
       primaryColorDark: VFColors.redDark,
       accentColor: VFColors.green,
-      dividerColor: VFColors.grey12,
+      dividerColor: VFColors.divider,
 
       /// 因为 iOS 上字体有时候会出现奇怪的问题
       /// [github issues](https://github.com/flutter/flutter/issues/26752)

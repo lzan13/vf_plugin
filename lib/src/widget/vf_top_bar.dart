@@ -16,6 +16,7 @@ class VFTopBar extends StatefulWidget implements PreferredSizeWidget {
   final Color titleColor;
   // 居中
   final bool center;
+  final Widget titleWidget;
 
   // 左侧图标
   final IconData leftIcon;
@@ -36,6 +37,7 @@ class VFTopBar extends StatefulWidget implements PreferredSizeWidget {
     this.title,
     this.titleSize: VFSizes.title,
     this.titleColor: VFColors.greyBlack,
+    this.titleWidget,
     this.center: false,
     this.leftIcon,
     this.leftAction,
@@ -51,7 +53,8 @@ class VFTopBar extends StatefulWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(VFDimens.d_48);
+  Size get preferredSize =>
+      Size.fromHeight(height + (bottom?.preferredSize?.height ?? 0.0));
 }
 
 ///
@@ -63,13 +66,15 @@ class VFTopBarState extends State<VFTopBar> {
     final ThemeData themeData = Theme.of(context);
     final AppBarTheme appBarTheme = AppBarTheme.of(context);
 
-    return Container(
-      padding: EdgeInsets.only(top: widget.top),
-      height: widget.height + widget.top,
-      color: widget.bgColor ?? appBarTheme.color ?? themeData.primaryColor,
-      child: Column(
-        children: <Widget>[
-          Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          color: widget.bgColor ?? appBarTheme.color ?? themeData.primaryColor,
+          padding: EdgeInsets.only(top: widget.top),
+          height: widget.height + widget.top,
+          child: Row(
             children: <Widget>[
               widget.leftIcon != null
                   ? Container(
@@ -90,21 +95,25 @@ class VFTopBarState extends State<VFTopBar> {
                     )
                   : Container(
                       width: VFDimens.margin_normal,
+                      height: widget.height,
                     ),
               widget.leftWidget != null ? widget.leftWidget : Container(),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  widget.title,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: widget.center ? TextAlign.center : TextAlign.start,
-                  style: TextStyle(
-                    color: widget.titleColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: widget.titleSize,
-                  ),
-                ),
-              ),
+              widget.titleWidget == null
+                  ? Expanded(
+                      flex: 1,
+                      child: Text(
+                        widget.title,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign:
+                            widget.center ? TextAlign.center : TextAlign.start,
+                        style: TextStyle(
+                          color: widget.titleColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: widget.titleSize,
+                        ),
+                      ),
+                    )
+                  : widget.titleWidget,
               widget.rightWidget != null ? widget.rightWidget : Container(),
               widget.rightIcon != null
                   ? Container(
@@ -126,9 +135,9 @@ class VFTopBarState extends State<VFTopBar> {
                     ),
             ],
           ),
-          widget.bottom != null ? widget.bottom : Container(),
-        ],
-      ),
+        ),
+        widget.bottom != null ? widget.bottom : Container(),
+      ],
     );
   }
 }

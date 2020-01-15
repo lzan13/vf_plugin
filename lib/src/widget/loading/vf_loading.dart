@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:vf_plugin/src/constants/vf_colors.dart';
 import 'package:vf_plugin/src/constants/vf_dimens.dart';
 
 import 'package:vf_plugin/src/widget/loading/vf_loading_circle.dart';
@@ -42,7 +41,7 @@ enum VFLoadingType {
 ///
 class VFLoading extends StatelessWidget {
   // 颜色
-  final Color color;
+  Color color;
   // 大小
   final double size;
   // 线条宽度
@@ -50,16 +49,17 @@ class VFLoading extends StatelessWidget {
 // 类型
   final VFLoadingType type;
 
-  const VFLoading({
+  VFLoading({
     Key key,
-    this.color = VFColors.grey,
-    this.size = VFDimens.d_24,
+    this.color,
+    this.size = VFDimens.d_20,
     this.borderWidth = VFDimens.d_2,
     this.type = VFLoadingType.circle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    this.color = color ?? Theme.of(context).accentColor;
     switch (type) {
       case VFLoadingType.circle:
         return VFLCircle(
