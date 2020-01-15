@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:vf_plugin/vf_plugin.dart';
+import 'package:vf_plugin_example/page/blur_page.dart';
 
 import 'package:vf_plugin_example/page/list_example_page.dart';
 import 'package:vf_plugin_example/page/loading_page.dart';
@@ -54,6 +55,14 @@ class DemoPageState extends State<DemoPage> {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
               return TestPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '高斯模糊',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return BlurPage();
             }));
           },
         ),
