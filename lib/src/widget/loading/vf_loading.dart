@@ -54,7 +54,7 @@ class VFLoading extends StatelessWidget {
     this.color,
     this.size = VFDimens.d_20,
     this.borderWidth = VFDimens.d_2,
-    this.type = VFLoadingType.threeBounce,
+    this.type,
   }) : super(key: key);
 
   @override

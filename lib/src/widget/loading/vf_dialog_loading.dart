@@ -10,7 +10,7 @@ class VFDialogLoading extends StatelessWidget {
   VFLoadingType type;
   Color color;
 
-  VFDialogLoading({Key key, this.color, this.type = VFLoadingType.circle});
+  VFDialogLoading({Key key, this.color, this.type});
 
   @override
   Widget build(BuildContext context) {
