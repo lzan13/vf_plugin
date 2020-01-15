@@ -1,6 +1,7 @@
 // 导出自定义控件
 export 'loading/vf_dialog_loading.dart';
 export 'loading/vf_loading.dart';
+export 'vf_blur.dart';
 export 'vf_circle_icon.dart';
 export 'vf_example_item.dart';
 export 'vf_list_item.dart';

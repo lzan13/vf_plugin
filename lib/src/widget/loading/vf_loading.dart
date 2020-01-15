@@ -54,7 +54,7 @@ class VFLoading extends StatelessWidget {
     this.color,
     this.size = VFDimens.d_20,
     this.borderWidth = VFDimens.d_2,
-    this.type = VFLoadingType.circle,
+    this.type = VFLoadingType.threeBounce,
   }) : super(key: key);
 
   @override
@@ -113,7 +113,7 @@ class VFLoading extends StatelessWidget {
           size: size,
         );
       default:
-        return VFLCircle(
+        return VFLThreeBounce(
           color: color,
           size: size,
         );
