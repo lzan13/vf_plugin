@@ -17,6 +17,7 @@ class VFSliverDelegate extends SliverPersistentHeaderDelegate {
 
   // 标题
   final String title;
+  final double titleSize;
   // 居中
   final bool center;
   //  标题颜色
@@ -44,6 +45,7 @@ class VFSliverDelegate extends SliverPersistentHeaderDelegate {
     this.hasAlpha: true,
     this.maxAlpha: 96,
     this.title,
+    this.titleSize = VFSizes.title,
     this.center = false,
     this.color: VFColors.white,
     this.leftIcon,
@@ -133,8 +135,8 @@ class VFSliverDelegate extends SliverPersistentHeaderDelegate {
                               center ? TextAlign.center : TextAlign.start,
                           style: TextStyle(
                             color: color,
-                            fontWeight: FontWeight.w500,
-                            fontSize: VFSizes.s_18,
+                            fontWeight: FontWeight.w600,
+                            fontSize: titleSize,
                           ),
                         ),
                       ),

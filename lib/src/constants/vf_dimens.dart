@@ -112,7 +112,7 @@ class VFSizes {
   static const double s_40 = VFDimens.d_40;
 
   /// 标题
-  static const double title = VFDimens.d_20;
+  static const double title = VFDimens.d_18;
   static const double sub_title = VFDimens.d_16;
   static const double body = VFDimens.d_12;
 
