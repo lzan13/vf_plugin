@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,9 @@ import 'demo_page.dart';
 
 void main() async {
   runApp(StartApp());
+  // 初始化 Admob 插件
+  FirebaseAdMob.instance
+      .initialize(appId: 'ca-app-pub-3940256099942544~3347511713');
 }
 
 class StartApp extends StatelessWidget {
