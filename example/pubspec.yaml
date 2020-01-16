@@ -10,7 +10,7 @@ dependencies:
     sdk: flutter
 
   # Google Admob 广告
-  firebase_admob: 0.9.0+10
+  # firebase_admob: 0.9.0+10
 
   flutter_swiper: ^1.1.6
   
@@ -73,3 +73,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+module:
+  androidX: true
