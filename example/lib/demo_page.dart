@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:vf_plugin/vf_plugin.dart';
 import 'package:vf_plugin_example/page/blur_page.dart';
-
+import 'package:vf_plugin_example/page/google_admob.dart';
+import 'package:vf_plugin_example/page/google_admob_wrap.dart';
 import 'package:vf_plugin_example/page/list_example_page.dart';
 import 'package:vf_plugin_example/page/loading_page.dart';
 import 'package:vf_plugin_example/page/sliver_page.dart';
@@ -51,7 +52,7 @@ class DemoPageState extends State<DemoPage> {
           },
         ),
         VFListItem(
-          title: 'VFListItem 内容过长的情况，内容过长的情况内容过长的情况',
+          title: '测试列表项内容过长的情况，内容过长的情况内容过长的情况，是否隐藏显示内容',
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
               return TestPage();
@@ -63,6 +64,24 @@ class DemoPageState extends State<DemoPage> {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
               return BlurPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '测试 Google Admob',
+          describe: '测试 Google Admob 横幅、插屏、视频广告',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return AdmobPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '封装 Google Admob ',
+          describe: '测试封装 Google Admob',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return AdmobWrapPage();
             }));
           },
         ),

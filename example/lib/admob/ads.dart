@@ -24,6 +24,7 @@ library ads;
 ///   Dart Packages.org: https://pub.dartlang.org/packages/ads#-changelog-tab-
 ///
 
+import 'dart:developer' show log;
 import 'package:flutter/widgets.dart' show State;
 
 import 'package:firebase_admob/firebase_admob.dart'
@@ -38,8 +39,6 @@ import 'package:firebase_admob/firebase_admob.dart'
         RewardedVideoAdListener;
 
 import 'package:flutter/foundation.dart' show VoidCallback;
-
-import 'dart:developer' show log;
 
 import 'package:vf_plugin_example/admob/admob.dart'
     show AdErrorListener, Banner, FullScreenAd, VideoAd;

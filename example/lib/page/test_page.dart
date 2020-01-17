@@ -20,18 +20,20 @@ class TestPageState extends State<TestPage> {
         titleColor: VFColors.white,
         leftIcon: Icons.arrow_back,
       ),
-      body: ListView(children: <Widget>[
-        VFListItem(
-          isNewGroup: true,
-          title: '测试自定义 Item',
-          describe: '查看下自定义的 VFListItem 控件',
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_) {
-              return TestPage();
-            }));
-          },
-        ),
-      ]),
+      body: ListView(
+        children: <Widget>[
+          VFListItem(
+            isNewGroup: true,
+            title: '测试自定义 Item',
+            describe: '查看下自定义的 VFListItem 控件',
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) {
+                return TestPage();
+              }));
+            },
+          ),
+        ],
+      ),
     );
   }
 }
