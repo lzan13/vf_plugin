@@ -4,28 +4,6 @@ import 'package:vf_plugin/vf_plugin.dart';
 import 'package:vf_plugin_example/common/config.dart';
 
 class ADSManager {
-  // // Google Admob 配置
-  // final String ADMOB_APP_ID = Platform.isAndroid
-  //     ? 'ca-app-pub-3940256099942544~3347511713'
-  //     : 'ca-app-pub-3940256099942544~1458002511';
-
-  // // 横幅广告 Id
-  // final String ADMOB_BANNER_ID = Platform.isAndroid
-  //     ? 'ca-app-pub-3940256099942544/6300978111'
-  //     : 'ca-app-pub-3940256099942544/2934735716';
-
-  // // 插屏广告 Id
-  // final String ADMOB_INTERSTITIAL_ID = Platform.isAndroid
-  //     ? 'ca-app-pub-3940256099942544/1033173712'
-  //     : 'ca-app-pub-3940256099942544/4411468910';
-
-  // // 视频广告 Id
-  // final String ADMOB_VIDEO_ID = Platform.isAndroid
-  //     ? 'ca-app-pub-3940256099942544/5224354917'
-  //     : 'ca-app-pub-3940256099942544/1712485313';
-  // // 测试设备
-  // final String ADMOB_TEST_DEVICES = 'Samsung_Galaxy_SII_API_26:5554';
-
   // 广告配置信息
   final MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
     testDevices: <String>[Configs.ADMOB_TEST_DEVICES],
@@ -58,13 +36,18 @@ class ADSManager {
   }
 
   ///
-  /// 初始化广告数据
+  /// 初始化 Google Admob
   ///
-  void initADS(ADSRewardedListener listener) {
+  void initAdmob(ADSRewardedListener listener) {
     mListener = listener;
 
-    // 初始化 Admob
     FirebaseAdMob.instance.initialize(appId: Configs.ADMOB_APP_ID);
+  }
+
+  ///
+  /// 初始化广告数据
+  ///
+  void initADS() {
     // 实例化横幅广告并加载
     mBannerAds = createBannerAd()..load();
     // 实例化插屏广告并加载
@@ -77,13 +60,12 @@ class ADSManager {
         if (mListener != null) {
           mListener(rewardAmount);
         }
+      } else if (event == RewardedVideoAdEvent.closed) {
+        loadVideoADS();
       }
     };
-    // 奖励视频广告加载
-    RewardedVideoAd.instance.load(
-      adUnitId: Configs.ADMOB_VIDEO_ID,
-      targetingInfo: targetingInfo,
-    );
+    // 加载奖励视频广告
+    loadVideoADS();
   }
 
   // 创建 Banner 广告
@@ -105,7 +87,19 @@ class ADSManager {
       targetingInfo: targetingInfo,
       listener: (MobileAdEvent event) {
         VFLog.d("插屏广告监听 $event");
+        if (event == MobileAdEvent.closed) {
+          // 实例化插屏广告并加载
+          mInterstitialAds = createInterstitialAd()..load();
+        }
       },
+    );
+  }
+
+  // 加载奖励视频广告
+  void loadVideoADS() {
+    RewardedVideoAd.instance.load(
+      adUnitId: Configs.ADMOB_VIDEO_ID,
+      targetingInfo: targetingInfo,
     );
   }
 

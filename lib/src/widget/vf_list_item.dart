@@ -38,7 +38,7 @@ class VFListItem extends StatefulWidget {
   VFListItem({
     Key key,
     this.isNewGroup: false,
-    this.bgColor: VFColors.white,
+    this.bgColor,
     this.leftIcon,
     this.leftWidget,
     this.leftIconColor,
@@ -62,9 +62,7 @@ class VFListItemState extends State<VFListItem> {
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
 
-    widget.titleColor = widget.titleColor != null
-        ? themeData.textTheme.title.color
-        : widget.titleColor;
+    widget.titleColor = widget.titleColor ?? themeData.textTheme.title.color;
 
     return Container(
       margin: EdgeInsets.only(top: widget.isNewGroup ? VFDimens.d_16 : 0),
@@ -72,7 +70,7 @@ class VFListItemState extends State<VFListItem> {
       child: Column(
         children: <Widget>[
           FlatButton(
-            onPressed: widget.onPressed,
+            onPressed: widget.onPressed ?? () {},
             padding: EdgeInsets.all(VFDimens.d_0),
             child: Container(
               height: VFDimens.list_item_large,

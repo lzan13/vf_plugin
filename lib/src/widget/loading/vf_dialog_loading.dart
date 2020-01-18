@@ -23,13 +23,13 @@ class VFDialogLoading extends StatelessWidget {
           width: VFDimens.d_96,
           child: Container(
             decoration: new BoxDecoration(
-              color: VFColors.white,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.all(
                 Radius.circular(VFDimens.border_radius_normal),
               ),
               boxShadow: [
                 BoxShadow(
-                  color: VFColors.greyWhite54,
+                  color: Theme.of(context).cardColor,
                   offset: Offset(0.0, 5.0),
                   blurRadius: VFDimens.d_16,
                   spreadRadius: 2.0,

@@ -18,14 +18,12 @@ class AdmobPage extends StatefulWidget {
 }
 
 class AdmobPageState extends State<AdmobPage> {
-  int mGold;
+  int mGold = 0;
   @override
   void initState() {
     super.initState();
     // 初始化 ADS
-    ADSManager.instance.initADS((amount) {
-      mGold += amount;
-    });
+    ADSManager.instance.initADS();
   }
 
   @override

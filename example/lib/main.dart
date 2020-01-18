@@ -1,16 +1,18 @@
-import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:vf_plugin/vf_plugin.dart';
+import 'package:vf_plugin_example/page/ads/ads_manager.dart';
 
 import 'demo_page.dart';
 
 void main() async {
   runApp(StartApp());
-  // 初始化 Admob 插件
-  FirebaseAdMob.instance
-      .initialize(appId: 'ca-app-pub-3940256099942544~3347511713');
+  ADSManager.instance.initAdmob((amount) {
+    // setState(() {
+    //   mGold += amount;
+    // });
+  });
 }
 
 class StartApp extends StatelessWidget {
@@ -38,7 +40,7 @@ class StartApp extends StatelessWidget {
       primaryColorBrightness: Brightness.dark,
       primaryColor: VFColors.red,
       primaryColorDark: VFColors.redDark,
-      accentColor: VFColors.green,
+      accentColor: VFColors.blue,
       dividerColor: VFColors.divider,
 
       /// 因为 iOS 上字体有时候会出现奇怪的问题
