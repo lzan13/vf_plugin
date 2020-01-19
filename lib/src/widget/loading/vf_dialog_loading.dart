@@ -29,8 +29,8 @@ class VFDialogLoading extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Theme.of(context).cardColor,
-                  offset: Offset(0.0, 5.0),
+                  color: Theme.of(context).primaryColor.withAlpha(20),
+                  offset: Offset(0.0, 2.0),
                   blurRadius: VFDimens.d_16,
                   spreadRadius: 2.0,
                 ),
