@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import 'package:vf_plugin/vf_plugin.dart';
-
 import 'package:vf_plugin_example/request/api.dart';
 
 final Http http = Http();

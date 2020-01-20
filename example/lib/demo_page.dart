@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:vf_plugin/vf_plugin.dart';
 import 'package:vf_plugin_example/page/blur_page.dart';
+import 'package:vf_plugin_example/page/date_page.dart';
 import 'package:vf_plugin_example/page/google_admob.dart';
 import 'package:vf_plugin_example/page/list_example_page.dart';
 import 'package:vf_plugin_example/page/loading_page.dart';
+import 'package:vf_plugin_example/page/reg_page.dart';
 import 'package:vf_plugin_example/page/sliver_page.dart';
 import 'package:vf_plugin_example/page/test_page.dart';
+import 'package:vf_plugin_example/page/timeline_page.dart';
+import 'package:vf_plugin_example/page/timer_page.dart';
 
 class DemoPage extends StatefulWidget {
   @override
@@ -72,6 +76,39 @@ class DemoPageState extends State<DemoPage> {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (_) {
               return AdmobPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '时间日期',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return DatePage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '正则判断',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return RegexPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '定时器',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return TimerPage();
+            }));
+          },
+        ),
+        VFListItem(
+          title: '时间显示',
+          describe: '测试获取不同时间点的时间显示效果',
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_) {
+              return TimelinePage();
             }));
           },
         ),
